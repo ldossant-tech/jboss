@@ -21,7 +21,8 @@
     <!-- OpenAPI servlet para expor a documentação -->
     <servlet>
         <servlet-name>OpenApiServlet</servlet-name>
-        <servlet-class>io.swagger.v3.jaxrs2.integration.servlet.OpenApiServlet</servlet-class>
+        <!-- Classe correta do servlet do OpenAPI -->
+        <servlet-class>io.swagger.v3.jaxrs2.integration.OpenApiServlet</servlet-class>
         <init-param>
             <param-name>openApiConfiguration.resourcePackages</param-name>
             <param-value>com.example.api.resource</param-value>
