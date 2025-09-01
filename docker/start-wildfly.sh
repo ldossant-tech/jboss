@@ -41,5 +41,10 @@ EOF
 
 echo "Datasource configurado com sucesso!"
 
+# Realizar deploy da aplicação após configuração do datasource
+echo "Realizando deploy da aplicação..."
+/opt/jboss/wildfly/bin/jboss-cli.sh --connect --command="deploy /opt/jboss/wildfly/jboss-api.war"
+echo "Aplicação deployada com sucesso!"
+
 # Aguardar o processo do WildFly
 wait $WILDFLY_PID
