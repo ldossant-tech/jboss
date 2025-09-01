@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   postgres:
-    image: postgres:15-alpine
+    image: docker.io/library/postgres:15-alpine
     container_name: postgres-api
     environment:
       POSTGRES_DB: apidb
@@ -10,13 +10,10 @@ services:
       POSTGRES_PASSWORD: apipass
     ports:
       - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./docker/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
     networks:
       - api-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U apiuser -d apidb"]
+      test: "pg_isready -U apiuser -d apidb"
       interval: 10s
       timeout: 5s
       retries: 5
@@ -32,16 +29,14 @@ services:
     networks:
       - api-network
     environment:
-      - DB_HOST=postgres
-      - DB_PORT=5432
-      - DB_NAME=apidb
-      - DB_USER=apiuser
-      - DB_PASS=apipass
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: apidb
+      DB_USER: apiuser
+      DB_PASS: apipass
+    command: /opt/jboss/wildfly/bin/start-wildfly.sh
 
-volumes:
-  postgres_data:
 
 networks:
   api-network:
     driver: bridge
-
