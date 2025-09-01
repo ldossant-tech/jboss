@@ -1,7 +1,7 @@
 # Configuração do datasource PostgreSQL para WildFly
 
 # Adicionar módulo PostgreSQL
-module add --name=org.postgresql --resources=/opt/jboss/wildfly/postgresql-42.6.0.jar --dependencies=javax.api,javax.transaction.api
+module add --name=org.postgresql --resources=/opt/jboss/wildfly/postgresql-42.6.0.jar --dependencies=jakarta.api,jakarta.transaction.api
 
 # Adicionar driver PostgreSQL
 /subsystem=datasources/jdbc-driver=postgresql:add(driver-name="postgresql",driver-module-name="org.postgresql",driver-class-name=org.postgresql.Driver)
