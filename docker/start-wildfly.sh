@@ -21,7 +21,7 @@ echo "Configurando datasource PostgreSQL..."
 
 # Adicionar módulo PostgreSQL (ignora erro se já existir)
 if ! /opt/jboss/wildfly/bin/jboss-cli.sh --connect --command="module info org.postgresql" >/dev/null 2>&1; then
-  /opt/jboss/wildfly/bin/jboss-cli.sh --connect --command="module add --name=org.postgresql --resources=/opt/jboss/wildfly/postgresql-42.6.0.jar --dependencies=jakarta.api,javax.transaction.api"
+  /opt/jboss/wildfly/bin/jboss-cli.sh --connect --command="module add --name=org.postgresql --resources=/opt/jboss/wildfly/postgresql-42.6.0.jar --dependencies=jakarta.transaction.api"
 fi
 
 # Adicionar driver PostgreSQL (ignora se já existe)
