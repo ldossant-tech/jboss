@@ -74,6 +74,13 @@
             <version>2.2.15</version>
         </dependency>
 
+        <!-- Swagger UI static resources -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>swagger-ui</artifactId>
+            <version>5.11.0</version>
+        </dependency>
+
         <!-- Jackson for JSON -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
