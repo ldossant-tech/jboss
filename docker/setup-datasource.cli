@@ -1,0 +1,14 @@
+# Configuração do datasource PostgreSQL para WildFly
+
+# Adicionar módulo PostgreSQL
+module add --name=org.postgresql --resources=/opt/jboss/wildfly/postgresql-42.6.0.jar --dependencies=javax.api,javax.transaction.api
+
+# Adicionar driver PostgreSQL
+/subsystem=datasources/jdbc-driver=postgresql:add(driver-name="postgresql",driver-module-name="org.postgresql",driver-class-name=org.postgresql.Driver)
+
+# Adicionar datasource
+data-source add --jndi-name=java:jboss/datasources/PostgreSQLDS --name=PostgreSQLDS --connection-url=jdbc:postgresql://postgres:5432/apidb --driver-name=postgresql --user-name=apiuser --password=apipass --validate-on-match=true --background-validation=false --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter
+
+# Habilitar datasource
+data-source enable --name=PostgreSQLDS
+
