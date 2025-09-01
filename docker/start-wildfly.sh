@@ -30,18 +30,9 @@ if ! /opt/jboss/wildfly/bin/jboss-cli.sh --connect --command="/subsystem=datasou
 fi
 
 # Adicionar datasource (ignora se já existe)
-/opt/jboss/wildfly/bin/jboss-cli.sh --connect <<EOF
+/opt/jboss/wildfly/bin/jboss-cli.sh --connect <<'EOF'
 if (outcome != success) of /subsystem=datasources/data-source=PostgreSQLDS:read-resource
-  data-source add --jndi-name=java:jboss/datasources/PostgreSQLDS \
-                  --name=PostgreSQLDS \
-                  --connection-url=jdbc:postgresql://postgres:5432/apidb \
-                  --driver-name=postgresql \
-                  --user-name=apiuser \
-                  --password=apipass \
-                  --validate-on-match=true \
-                  --background-validation=false \
-                  --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker \
-                  --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter
+  data-source add --jndi-name=java:jboss/datasources/PostgreSQLDS --name=PostgreSQLDS --connection-url=jdbc:postgresql://postgres:5432/apidb --driver-name=postgresql --user-name=apiuser --password=apipass --validate-on-match=true --background-validation=false --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter
 end-if
 EOF
 
