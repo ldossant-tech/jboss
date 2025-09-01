@@ -19,8 +19,8 @@ RUN mvn clean package -DskipTests
 # ============================
 FROM quay.io/wildfly/wildfly:27.0.1.Final-jdk11
 
-# Copiar WAR gerado do estágio build para o deployments do WildFly
-COPY --from=build /app/target/jboss-api.war /opt/jboss/wildfly/standalone/deployments/
+# Copiar WAR gerado para diretório temporário (deploy será feito via CLI)
+COPY --from=build /app/target/jboss-api.war /opt/jboss/wildfly/jboss-api.war
 
 # Baixar driver PostgreSQL
 USER root
