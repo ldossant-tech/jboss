@@ -18,19 +18,18 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     
-    <!-- Swagger UI -->
+    <!-- OpenAPI servlet para expor a documentação -->
     <servlet>
-        <servlet-name>SwaggerUIServlet</servlet-name>
-        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <servlet-name>OpenApiServlet</servlet-name>
+        <servlet-class>io.swagger.v3.jaxrs2.integration.servlet.OpenApiServlet</servlet-class>
         <init-param>
-            <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>io.swagger.v3.jaxrs2.integration.resources</param-value>
+            <param-name>openApiConfiguration.resourcePackages</param-name>
+            <param-value>com.example.api.resource</param-value>
         </init-param>
-        <load-on-startup>1</load-on-startup>
     </servlet>
-    
+
     <servlet-mapping>
-        <servlet-name>SwaggerUIServlet</servlet-name>
+        <servlet-name>OpenApiServlet</servlet-name>
         <url-pattern>/swagger/*</url-pattern>
     </servlet-mapping>
     
