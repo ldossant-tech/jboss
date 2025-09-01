@@ -32,8 +32,8 @@ Esta é uma API REST completa desenvolvida com JBoss/WildFly e PostgreSQL, utili
 
 5. **Acesse a aplicação**
    - Interface principal: http://localhost:8080/jboss-api
-   - API OpenAPI JSON: http://localhost:8080/jboss-api/api/openapi.json
-   - Swagger UI: https://petstore.swagger.io/?url=http://localhost:8080/jboss-api/api/openapi.json
+   - API OpenAPI JSON: http://localhost:8080/jboss-api/swagger
+   - Swagger UI: https://petstore.swagger.io/?url=http://localhost:8080/jboss-api/swagger
 
 ## 📡 Endpoints da API
 
