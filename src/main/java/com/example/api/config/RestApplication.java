@@ -30,6 +30,7 @@ public class RestApplication extends Application {
         // Swagger resources
         classes.add(io.swagger.v3.jaxrs2.integration.resources.OpenApiResource.class);
         classes.add(io.swagger.v3.jaxrs2.integration.resources.AcceptHeaderOpenApiResource.class);
+        classes.add(io.swagger.v3.jaxrs2.integration.resources.SwaggerUiResource.class);
 
         return classes;
     }
